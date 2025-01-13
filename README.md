@@ -15,3 +15,9 @@ Take the fractional value as LTL demand.
 Compute the centroids and build a distance matrix. ((5000+200)* (5000+200))
 
 Locate the charging stations available in these 6 counties (need longitude, latitude)
+
+
+
+
+pt 2. 
+script to pull data from API
