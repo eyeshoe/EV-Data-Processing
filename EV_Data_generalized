@@ -1,0 +1,41 @@
+import requests
+import pandas as pd
+
+# Get data from the API
+url = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json"
+params = {
+    "api_key": "NZCThOVvRQRq8mhldeIcDYhe3q3YT6coh02o9ncb",
+    "fuel_type": "ELEC",
+    "access": "public",
+    "status": "E",
+    "state": "CA",  
+    "county": "Orange"
+}
+
+response = requests.get(url, params=params)
+data = response.json()
+
+# Extract station data
+stations = data.get('fuel_stations', [])
+
+# Convert to a DataFrame
+df = pd.DataFrame(stations)
+
+# Print column names to check what's available
+print("Columns available in the DataFrame:")
+print(df.columns)
+
+# Verify if the columns exist and modify your column selection accordingly
+available_columns = ['station_name', 'latitude', 'longitude', 'facility_type', 'maximum_vehicle_class', 'zip',  'ev_connector_types', 'federal_agency' ]
+
+# Check which of your desired columns are in the DataFrame
+existing_columns = [col for col in available_columns if col in df.columns]
+
+# Filter the DataFrame based on available columns
+filtered_df = df[existing_columns]
+
+# Display the filtered DataFrame
+print(filtered_df)
+
+# Export the filtered data to a CSV
+filtered_df.to_csv('filtered_ev_stations.csv', index=False)
