@@ -21,3 +21,8 @@ Locate the charging stations available in these 6 counties (need longitude, lati
 
 pt 2. 
 script to pull data from API
+
+
+total truck volume by county. 
+https://www.dmv.ca.gov/portal/uploads/2020/06/2019-Estimated-Vehicles-Registered-by-County-1.pdf
+this dataset is from 2019, but closest I can get. 
